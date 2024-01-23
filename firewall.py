@@ -68,11 +68,11 @@ if __name__ == "__main__":
     toxicity_score = check_toxicity(prompt, api_key)
     result = classifier(prompt)
     label = result[0]['label']
-    result = detect_personal_info(prompt)
-    if label == 'INJECTION' or result or toxicity_score > 0.5:
+    result2 = detect_personal_info(prompt)
+    if label == 'INJECTION' or result2 or toxicity_score > 0.5:
         if label == 'INJECTION':
             print("Prompt injection detected")
-        if result:
+        if result2:
             print("Personal info detected")
         if toxicity_score > 0.5:
             print("Toxic prompt detected")
