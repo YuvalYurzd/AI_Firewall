@@ -32,7 +32,7 @@ def check_toxicity(prompt, api_key):
 
 
 def detect_personal_info(prompt):
-    # Define regular expressions for common personal information patterns
+
     patterns = {
         'email': r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
         'phone': r'\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b',
@@ -44,7 +44,7 @@ def detect_personal_info(prompt):
 
     personal_info = {}
 
-    # Search for patterns in the prompt
+   
     for key, pattern in patterns.items():
         matches = re.findall(pattern, prompt)
         if matches:
@@ -62,7 +62,7 @@ if __name__ == "__main__":
         "text-classification",
         model=model,
         tokenizer=tokenizer,
-        device=torch.device("cuda" if torch.cuda.is_available() else "cpu"),  # "CPU" corrected to "cpu"
+        device=torch.device("cuda" if torch.cuda.is_available() else "cpu"),  
     )
     prompt = input("Enter prompt: ")
     toxicity_score = check_toxicity(prompt, api_key)
